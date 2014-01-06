@@ -2,45 +2,464 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
 .container {
-	width: 768px;
-	height: 459px;
+	position: relative;
+	width: 780px;
+	height: 455px;
 	margin: 100px auto 0 auto;
+	background-image: asset-url("masteries/background.jpg");
+	background-size: 100%;
 }
 
 .tree {
-	width: 222px;
-	height: 429px;
-	margin: 0 1px 0 1px;
+	position: relative;
+	width: 255px;
+	height: 435px;
+	margin: 0 0 0 3px;
 	float: left;
-	padding: 15px;
-	border: 1px solid black;
-
-	&#offense {
-		background: red;
-	}
-	&#defense {
-		background: blue;
-	}
-	&#utility {
-		background: green;
-	}
+	padding: 10px 0 10px 0;
 }
 
 .row {
-	width: 222px;
+	position: relative;
+	width: 240px;
 	height: 55px;
-	margin: 5px 0 5px 0;
+	margin: 5px 0 15px 8px;
+}
+
+.points {
+	position: relative;
+	width: 30px;
+	height: 16px;
+	background: black;
+	top: 38px;
+	margin: 0 auto 0 auto;
+	@include border-radius(5px);
+	border: 1px green solid;
+	text-align: center;
+	color: green;
+	font-size: 12px;
+	font-weight: bold;
+	vertical-align: middle;
+	z-index: 1;
+}
+
+.require {
+	position: absolute;
+	width: 8px;
+	height: 30px;
+	background: grey;
+	border: 2px solid black;
+
+	&#butcherFeast{
+		left: 212px;
+		top: 60px;
+		z-index: 0;
+	}
+
+	&#bruteForceMartialMastery{
+		left: 92px;
+		top: 130px;
+		z-index: 0;
+	}
+
+	&#mentalForceArcaneMastery{
+		left: 152px;
+		top: 130px;
+		z-index: 0;
+	}
+
+	&#spellWeavingBladeWeaving{
+		left: 32px;
+		top: 200px;
+		z-index: 0;
+	}
+
+	&#executionerDangerousGame{
+		left: 212px;
+		top: 200px;
+		z-index: 0;
+	}
+
+	&#blockUnyielding{
+		left: 32px;
+		top: 60px;
+		z-index: 0;
+	}
+
+	&#toughSkinBladedArmor{
+		left: 212px;
+		top: 60px;
+		z-index: 0;
+	}
+
+	&#veteransScarsJuggernaut{
+		left: 92px;
+		top: 130px;
+		z-index: 0;
+	}
+
+	&#resistanceEvasive{
+		left: 212px;
+		top: 200px;
+		z-index: 0;
+	}
+
+	&#hardinessReinforcedArmor{
+		left: 152px;
+		top: 200px;
+		z-index: 0;
+	}
+
+	&#perseveranceSecondWind{
+		left: 32px;
+		top: 270px;
+		z-index: 0;
+	}
+
+	&#meditationStrengthOfSpirit{
+		left: 152px;
+		top: 60px;
+		z-index: 0;
+	}
+
+	&#alchemistCulinaryMaster{
+		left: 212px;
+		top: 130px;
+		z-index: 0;
+	}
+
+	&#greedScavenger{
+		left: 32px;
+		top: 200px;
+		z-index: 0;
+	}
+
+	&#wealthBandit{
+		left: 92px;
+		top: 270px;
+		z-index: 0;
+	}
 }
 
 .mastery {
+	position: relative;
 	width: 50px;
-	height: 55px;
-	background: black;
+	height: 50px;
+	background: grey;
 	float: left;
-	margin: 0 3px 0 2px;
+	margin: 0 3px 0 3px;
+	@include border-radius(5px);
+	border: 2px solid grey;
+	z-index: 1;
 
 	&#blank{
 		background: none;
+		border: none;
+	}
+
+	&#DoubleEdgeSword{
+		background: asset-url("masteries/DoubleEdgeSword.png");
+		background-size: 100%;
+	}
+
+	&#Fury{
+		background: asset-url("masteries/Fury.png");
+		background-size: 100%;
+	}
+
+	&#Sorcery{
+		background: asset-url("masteries/Sorcery.png");
+		background-size: 100%;
+	}
+
+	&#Butcher{
+		background: asset-url("masteries/Butcher.png");
+		background-size: 100%;
+	}
+
+	&#ExposeWeakness{
+		background: asset-url("masteries/ExposeWeakness.png");
+		background-size: 100%;
+	}
+
+	&#BruteForce{
+		background: asset-url("masteries/BruteForce.png");
+		background-size: 100%;
+	}
+
+	&#MentalForce{
+		background: asset-url("masteries/MentalForce.png");
+		background-size: 100%;
+	}
+
+	&#Feast{
+		background: asset-url("masteries/Feast.png");
+		background-size: 100%;
+	}
+
+
+	&#SpellWeaving{
+		background: asset-url("masteries/SpellWeaving.png");
+		background-size: 100%;
+	}
+
+
+	&#MartialMastery{
+		background: asset-url("masteries/MartialMastery.png");
+		background-size: 100%;
+	}
+
+
+	&#ArcaneMastery{
+		background: asset-url("masteries/ArcaneMastery.png");
+		background-size: 100%;
+	}
+
+
+	&#Executioner{
+		background: asset-url("masteries/Executioner.png");
+		background-size: 100%;
+	}
+
+
+	&#BladeWeaving{
+		background: asset-url("masteries/BladeWeaving.png");
+		background-size: 100%;
+	}
+
+
+	&#Warlord{
+		background: asset-url("masteries/Warlord.png");
+		background-size: 100%;
+	}
+
+
+	&#Archmage{
+		background: asset-url("masteries/Archmage.png");
+		background-size: 100%;
+	}
+
+
+	&#DangerousGame{
+		background: asset-url("masteries/DangerousGame.png");
+		background-size: 100%;
+	}
+
+
+	&#Frenzy{
+		background: asset-url("masteries/Frenzy.png");
+		background-size: 100%;
+	}
+
+
+	&#DevastatingStrikes{
+		background: asset-url("masteries/DevastatingStrikes.png");
+		background-size: 100%;
+	}
+
+
+	&#ArcaneBlade{
+		background: asset-url("masteries/ArcaneBlade.png");
+		background-size: 100%;
+	}
+
+
+	&#Havoc{
+		background: asset-url("masteries/Havoc.png");
+		background-size: 100%;
+	}
+
+	&#Block{
+		background: asset-url("masteries/Block.png");
+		background-size: 100%;
+	}
+
+	&#Recovery{
+		background: asset-url("masteries/Recovery.png");
+		background-size: 100%;
+	}
+
+	&#EnchantedArmor{
+		background: asset-url("masteries/EnchantedArmor.png");
+		background-size: 100%;
+	}
+
+	&#ToughSkin{
+		background: asset-url("masteries/ToughSkin.png");
+		background-size: 100%;
+	}
+
+	&#Unyielding{
+		background: asset-url("masteries/Unyielding.png");
+		background-size: 100%;
+	}
+
+	&#VeteransScars{
+		background: asset-url("masteries/VeteransScars.png");
+		background-size: 100%;
+	}
+
+	&#BladedArmor{
+		background: asset-url("masteries/BladedArmor.png");
+		background-size: 100%;
+	}
+
+	&#Oppression{
+		background: asset-url("masteries/Oppression.png");
+		background-size: 100%;
+	}
+
+	&#Juggernaut{
+		background: asset-url("masteries/Juggernaut.png");
+		background-size: 100%;
+	}
+
+	&#Hardiness{
+		background: asset-url("masteries/Hardiness.png");
+		background-size: 100%;
+	}
+
+	&#Resistance{
+		background: asset-url("masteries/Resistance.png");
+		background-size: 100%;
+	}
+
+	&#Perseverance{
+		background: asset-url("masteries/Perseverance.png");
+		background-size: 100%;
+	}
+
+	&#Swiftness{
+		background: asset-url("masteries/Swiftness.png");
+		background-size: 100%;
+	}
+
+	&#ReinforcedArmor{
+		background: asset-url("masteries/ReinforcedArmor.png");
+		background-size: 100%;
+	}
+
+	&#Evasive{
+		background: asset-url("masteries/Evasive.png");
+		background-size: 100%;
+	}
+
+	&#SecondWind{
+		background: asset-url("masteries/SecondWind.png");
+		background-size: 100%;
+	}
+
+	&#LegendaryGuardian{
+		background: asset-url("masteries/LegendaryGuardian.png");
+		background-size: 100%;
+	}
+
+	&#RunicBlessing{
+		background: asset-url("masteries/RunicBlessing.png");
+		background-size: 100%;
+	}
+
+	&#Tenacious{
+		background: asset-url("masteries/Tenacious.png");
+		background-size: 100%;
+	}
+
+	&#Phasewalker{
+		background: asset-url("masteries/Phasewalker.png");
+		background-size: 100%;
+	}
+
+	&#FleetOfFoot{
+		background: asset-url("masteries/FleetOfFoot.png");
+		background-size: 100%;
+	}
+
+	&#Meditation{
+		background: asset-url("masteries/Meditation.png");
+		background-size: 100%;
+	}
+
+	&#Scout{
+		background: asset-url("masteries/Scout.png");
+		background-size: 100%;
+	}
+
+	&#SummonersInsight{
+		background: asset-url("masteries/SummonersInsight.png");
+		background-size: 100%;
+	}
+
+	&#StrengthOfSpirit{
+		background: asset-url("masteries/StrengthOfSpirit.png");
+		background-size: 100%;
+	}
+
+	&#Alchemist{
+		background: asset-url("masteries/Alchemist.png");
+		background-size: 100%;
+	}
+
+	&#Greed{
+		background: asset-url("masteries/Greed.png");
+		background-size: 100%;
+	}
+
+	&#RunicAffinity{
+		background: asset-url("masteries/RunicAffinity.png");
+		background-size: 100%;
+	}
+
+	&#Vampirism{
+		background: asset-url("masteries/Vampirism.png");
+		background-size: 100%;
+	}
+
+	&#CulinaryMaster{
+		background: asset-url("masteries/CulinaryMaster.png");
+		background-size: 100%;
+	}
+
+	&#Scavenger{
+		background: asset-url("masteries/Scavenger.png");
+		background-size: 100%;
+	}
+
+	&#Wealth{
+		background: asset-url("masteries/Wealth.png");
+		background-size: 100%;
+	}
+
+	&#ExpandedMind{
+		background: asset-url("masteries/ExpandedMind.png");
+		background-size: 100%;
+	}
+
+	&#Inspiration{
+		background: asset-url("masteries/Inspiration.png");
+		background-size: 100%;
+	}
+
+	&#Bandit{
+		background: asset-url("masteries/Bandit.png");
+		background-size: 100%;
+	}
+
+	&#Intelligence{
+		background: asset-url("masteries/Intelligence.png");
+		background-size: 100%;
+	}
+
+	&#Wanderer{
+		background: asset-url("masteries/Wanderer.png");
+		background-size: 100%;
 	}
 }
