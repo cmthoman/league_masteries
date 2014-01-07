@@ -173,8 +173,15 @@
 	float: left;
 	margin: 0 3px 0 3px;
 	@include border-radius(5px);
-	border: 2px solid grey;
+	border: 2px solid green;
 	z-index: 1;
+
+	a{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		text-decoration: none;
+	}
 
 	&#blank{
 		background: none;
@@ -184,28 +191,24 @@
 	&#DoubleEdgeSword{
 		background: asset-url("masteries/DoubleEdgeSword.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Fury{
 		background: asset-url("masteries/Fury.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Sorcery{
 		background: asset-url("masteries/Sorcery.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Butcher{
 		background: asset-url("masteries/Butcher.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
@@ -320,28 +323,24 @@
 	&#Block{
 		background: asset-url("masteries/Block.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Recovery{
 		background: asset-url("masteries/Recovery.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#EnchantedArmor{
 		background: asset-url("masteries/EnchantedArmor.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#ToughSkin{
 		background: asset-url("masteries/ToughSkin.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
@@ -438,28 +437,24 @@
 	&#Phasewalker{
 		background: asset-url("masteries/Phasewalker.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#FleetOfFoot{
 		background: asset-url("masteries/FleetOfFoot.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Meditation{
 		background: asset-url("masteries/Meditation.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
 	&#Scout{
 		background: asset-url("masteries/Scout.png");
 		background-size: 100%;
-		border: solid 2px green;
 		@include grayscale_element(100);
 	}
 
