@@ -1,20 +1,28 @@
 $(document).ready(function (){
 
+	//Global Presets
 	rowLockCheck('offense', 0);
 	rowLockCheck('defense', 0);
 	rowLockCheck('utility', 0);
+	var remainingPoints = 30;
+	updateRemainingPoints(remainingPoints);
 
 	$( '.container' )
 	.bind('contextmenu', function(){
 		return false;
 	});
 
+	//On Click Listener
 	$( '.masteryAncor' )
 	.mousedown(function(event) {
+		//Stop browser propagation and prevent default actions when clicking these links
 		event.stopPropagation();
 		event.preventDefault();
+
+		//Find and set all of the attributes relative to the mastery that was clicked
 		var tree = $(this).closest('.tree').attr('id');
-		var rowTier = $(this).closest('.row').data('tier');
+		var row = $(this).closest('.row');
+		var rowTier = row.data('tier');
 		var thisRowPointsTotal = getRowPointTotal(tree, rowTier);
 		var lastActiveRow = getLastActiveRow(tree);
 		var treeTotalPoints = getTreeTotalPoints(tree);
@@ -25,30 +33,63 @@ $(document).ready(function (){
 		var masteryRequiresPoints = getMasteryRequiredPoints(rowTier);
 		var masteryCurrentPoints = +mastery.find('.currentPoints').text();
 		var masteryMaxPoints = mastery.data('max-points');
-		if (masteryMaxPoints == null){
-			masteryMaxPoints = mastery.data('max-points');
-		}
+		remainingPoints = +$('.remainingPoints').text();
+
+		//Determine if the click was a left click or right click and do something
 		switch (event.which) {
-        case 1:
-            addPoint(mastery, tree, rowTier, thisRowPointsTotal, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints);
+        case 1: //This is a left click
+            addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints);
             break;
-        case 3:
+        case 3: //This is a right click
+        	removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
     	}
 	});
 
+	//Where the magic happens
 
-	
-	function addPoint(mastery, tree, rowTier, thisRowPointsTotal, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints){
-		if(masteryCurrentPoints < masteryMaxPoints && treeTotalPoints >= masteryRequiresPoints){
-			mastery.find('.currentPoints').text(masteryCurrentPoints + 1);
-			treeTotalPoints = getTreeTotalPoints(tree);
-			rowLockCheck(tree, treeTotalPoints);
+	function removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints){
+		mastery.find('.currentPoints').text(masteryCurrentPoints - 1);
+		treeTotalPoints = getTreeTotalPoints(tree);
+		remainingPoints++;
+		updateRemainingPoints(remainingPoints);
+		rowLockCheck(tree, treeTotalPoints);
+		lastActiveRow = getLastActiveRow;
+	}
+
+	function removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints){
+		switch (lastActiveRow){
+		case 1:
+			if(rowTier == 1 && masteryCurrentPoints > 0){ 
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+		case 2:
+			if(rowTier == 1 && masteryCurrentPoints > 0 && thisRowPointsTotal > 4){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 2 && masteryCurrentPoints > 0){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
 		}
 	}
 
+	function addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints){
+		if(masteryCurrentPoints < masteryMaxPoints && treeTotalPoints >= masteryRequiresPoints && remainingPoints > 0){
+			mastery.find('.currentPoints').text(masteryCurrentPoints + 1);
+			treeTotalPoints = getTreeTotalPoints(tree);
+			remainingPoints--;
+			updateRemainingPoints(remainingPoints);
+			rowLockCheck(tree, treeTotalPoints);
+			lastActiveRow = getLastActiveRow(tree);
+		}
+	}
+
+	function updateRemainingPoints(remainingPoints){
+		$('.remainingPoints').text(remainingPoints);
+	}
+
 	function rowLockCheck(tree, treeTotalPoints){
-		switch (treeTotalPoints) {
-		case 0:
+		$('.tree#'+tree).children('.row').find('.masteryAvailable').removeClass('masteryAvailable').addClass('mastery');
+		switch (true) {
+		case (treeTotalPoints >= 0 && treeTotalPoints < 4):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
@@ -69,7 +110,7 @@ $(document).ready(function (){
 			});
 			break;
 
-		case 4:
+		case (treeTotalPoints >= 4 && treeTotalPoints < 8):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
@@ -90,7 +131,7 @@ $(document).ready(function (){
 			});
 			break;
 
-		case 8:
+		case (treeTotalPoints >= 8 && treeTotalPoints < 12):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
@@ -111,7 +152,7 @@ $(document).ready(function (){
 			});
 			break;
 
-		case 12:
+		case (treeTotalPoints >= 12 && treeTotalPoints < 16):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
@@ -132,7 +173,7 @@ $(document).ready(function (){
 			});
 			break;
 
-		case 16:
+		case (treeTotalPoints >= 16 && treeTotalPoints < 20):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
