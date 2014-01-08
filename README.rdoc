@@ -8,9 +8,7 @@ Currently the talent tree's add and remove point functioanlity works as expected
 Near Future:
 
 -Reset points button
-
 -Mastery -> Mastery precursor logic
-
 -Tooltips
 
 
