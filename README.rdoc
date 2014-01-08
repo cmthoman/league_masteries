@@ -1,28 +1,12 @@
-== README
+League Masteries is a web based clone of the mastery tree for League of Legends as of pre-season 4. I am creating it as an excercise in writing a complete solution using jquery, ruby and sass while I try to learn and build on my programming skill set.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Currently the talent tree's add and remove point functioanlity works as expected with only the mastery -> mastery requirements missing (you can take any mastery even if you dont have the precursor mastery maxed).
 
-Things you may want to cover:
+Near Future:
 
-* Ruby version
+-Reset points button
+-Mastery -> Mastery precursor logic
 
-* System dependencies
+Long Term:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Recreate the entire League of Legends mastery page including multiple mastery pages and save pages to a database under a collection name.
