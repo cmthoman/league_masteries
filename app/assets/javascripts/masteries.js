@@ -62,12 +62,74 @@ $(document).ready(function (){
 			if(rowTier == 1 && masteryCurrentPoints > 0){ 
 				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
 			}
+			break;
+		
 		case 2:
-			if(rowTier == 1 && masteryCurrentPoints > 0 && thisRowPointsTotal > 4){
+			masteryRequiresPoints = getMasteryRequiredPoints(2);
+			if(rowTier == 1 && masteryCurrentPoints > 0 && thisRowPointsTotal > masteryRequiresPoints){
 				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
 			}else if(rowTier == 2 && masteryCurrentPoints > 0){
 				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
 			}
+			break;
+		
+		case 3:
+			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2);
+			masteryRequiresPoints = getMasteryRequiredPoints(3);
+			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 2 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 3 && masteryCurrentPoints > 0){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+			break;
+		case 4:
+			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3);
+			masteryRequiresPoints = getMasteryRequiredPoints(4);
+			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 2 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 3 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+			else if(rowTier == 4 && masteryCurrentPoints > 0){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+			break;
+		case 5:
+			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3) + getRowPointTotal(tree, 4);
+			masteryRequiresPoints = getMasteryRequiredPoints(5);
+			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 2 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 3 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 4 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 5 && masteryCurrentPoints > 0){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+			break;
+		case 6:
+			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3) + getRowPointTotal(tree, 4) + getRowPointTotal(tree, 5);
+			masteryRequiresPoints = getMasteryRequiredPoints(6);
+			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 2 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 3 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 4 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 5 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}else if(rowTier == 6 && masteryCurrentPoints > 0){
+				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+			}
+			break;
 		}
 	}
 
@@ -194,7 +256,7 @@ $(document).ready(function (){
 			});
 			break;
 
-		case 20:
+		case (treeTotalPoints >= 20):
 			$('.tree#'+tree).children("[data-tier='1']").find('.mastery').each(function(){
 				$(this).removeClass('mastery').addClass('masteryAvailable');
 			});
