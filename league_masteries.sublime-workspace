@@ -4,12 +4,92 @@
 		"selected_items":
 		[
 			[
-				"ps",
-				"position"
+				"re",
+				"rowReqiuresPoints"
 			],
 			[
-				"re",
-				"repeat-y"
+				"tier",
+				"offensiveTier1Total"
+			],
+			[
+				"of",
+				"offensiveTier1Total"
+			],
+			[
+				"current",
+				"currentTier"
+			],
+			[
+				"a",
+				"activeTier"
+			],
+			[
+				"get",
+				"getActiveTier"
+			],
+			[
+				"row",
+				"rowReqiuresPoints"
+			],
+			[
+				"off",
+				"offensiveTier1Total"
+			],
+			[
+				"requi",
+				"requiredPointsTotal"
+			],
+			[
+				"o",
+				"offensiveTier3Total"
+			],
+			[
+				"ro",
+				"requiredPointsTotal"
+			],
+			[
+				"mast",
+				"masteryAvailable"
+			],
+			[
+				"offens",
+				"offensiveTier1Total"
+			],
+			[
+				"mastery",
+				"masteryAncor"
+			],
+			[
+				"offen",
+				"offensiveTier1Total"
+			],
+			[
+				"req",
+				"requiredPointsTotal"
+			],
+			[
+				"poin",
+				"requires-points"
+			],
+			[
+				"requir",
+				"requiresPoints"
+			],
+			[
+				"requ",
+				"requiresPoints"
+			],
+			[
+				"gre",
+				"grayscale"
+			],
+			[
+				"A",
+				"ArcaneBlade"
+			],
+			[
+				"ps",
+				"position"
 			],
 			[
 				"back",
@@ -24,21 +104,18 @@
 	"buffers":
 	[
 		{
-			"contents": "class MasteriesController < ApplicationController\n	def index\n		\n	end\nend",
-			"file": "app/controllers/masteries_controller.rb",
-			"file_size": 54,
-			"file_write_time": 130334914682000661,
-			"settings":
-			{
-				"buffer_size": 72,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/views/masteries/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 4001,
+				"buffer_size": 14217,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/masteries.js",
+			"settings":
+			{
+				"buffer_size": 1737,
 				"line_ending": "Windows"
 			}
 		},
@@ -46,7 +123,7 @@
 			"file": "app/assets/stylesheets/masteries.css.scss",
 			"settings":
 			{
-				"buffer_size": 678,
+				"buffer_size": 15618,
 				"line_ending": "Unix"
 			}
 		}
@@ -87,10 +164,15 @@
 	},
 	"file_history":
 	[
-		"/D/Code/league_masteries/config/routes.rb",
+		"/D/Code/league_masteries/app/assets/javascripts/application.js",
+		"/D/Code/league_masteries/app/assets/javascripts/masteries.js",
+		"/D/Code/league_masteries/app/controllers/masteries_controller.rb",
+		"/D/Code/league_masteries/app/views/layouts/application.html.erb",
 		"/D/Code/league_masteries/Gemfile",
-		"/D/Code/lolvids/app/views/layouts/application.html.erb",
+		"/D/Code/league_masteries/config.rb",
 		"/D/Code/lolvids/app/assets/stylesheets/layout.css.scss",
+		"/D/Code/league_masteries/config/routes.rb",
+		"/D/Code/lolvids/app/views/layouts/application.html.erb",
 		"/D/Code/lolvids/app/assets/javascripts/application.js",
 		"/D/Code/lolvids/lolvids.sublime-project",
 		"/D/Code/lolvids/app/views/home/index.html.erb",
@@ -115,7 +197,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -129,6 +211,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"offensiveTier1Total",
+			"requiresPoints",
+			"currentPoints",
+			"maxPoints",
+			"\"",
+			"requires",
+			"href=\"#\"",
+			"@include grayscale_element(0%);",
+			"@include grayscale_element(100%);",
+			"ement(1",
+			"ement(100",
+			"100",
+			"Strength",
+			"Strengh",
+			"reinfo",
+			"bladed",
+			"0",
+			"<div class=\"points\">0 / 4</div>",
+			"<div class=\"points\">0 / 3</div>",
+			"<div class=\"points\">0 / 2</div>",
+			"<div class=\"points\">0 / 1</div>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -136,6 +239,22 @@
 		"regex": false,
 		"replace_history":
 		[
+			"masteryRequiresPoints",
+			"masteryCurrentPoints",
+			"masteryMaxPoints",
+			"'",
+			"requires-mastery",
+			"href=\"#\" class=\"masteryAncor\"",
+			"@include filter(grayscale(0%));",
+			"",
+			"ement(100%",
+			"ement(0%",
+			"<span class=\"currentPoints\">0</span>",
+			"<a href=\"#\">\n					<div class=\"points\">0 / 4</div>\n				</a>",
+			"<a href=\"#\">\n					<div class=\"points\">0 / 3</div>\n				</a>",
+			"<a href=\"#\">\n					<div class=\"points\">0 / 2</div>\n				</a>",
+			"<a href=\"#\">\n					<div class=\"points\">0 / 1</div>\n				</a>",
+			"<a href=\"#\">\n	<div class=\"points\">0 / 1</div>\n</a>"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -151,47 +270,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/controllers/masteries_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 72,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								72,
-								72
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/views/masteries/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4001,
+						"buffer_size": 14217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3487,
-								3487
+								1117,
+								1117
 							]
 						],
 						"settings":
@@ -200,7 +291,35 @@
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 874.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/assets/javascripts/masteries.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1477,
+								1477
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -212,15 +331,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 678,
+						"buffer_size": 15618,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								673,
-								673
+								10134,
+								10134
 							]
 						],
 						"settings":
@@ -228,10 +347,10 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7810.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -239,7 +358,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -275,7 +394,7 @@
 	"project": "league_masteries.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
