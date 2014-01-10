@@ -4,15 +4,127 @@
 		"selected_items":
 		[
 			[
-				"re",
-				"rowReqiuresPoints"
+				"rowt",
+				"rowTier"
 			],
 			[
-				"tier",
-				"offensiveTier1Total"
+				"getrow",
+				"getRowPointTotal"
+			],
+			[
+				"master",
+				"masteryRequiresPoints"
+			],
+			[
+				"rowtot",
+				"thisRowPointsTotal"
+			],
+			[
+				"get",
+				"getRowPointTotal"
+			],
+			[
+				"mastery",
+				"masteryRequiresPoints"
+			],
+			[
+				"mast",
+				"mastery"
+			],
+			[
+				"mas",
+				"masteryAvailable"
+			],
+			[
+				"rem",
+				"remainingPoints"
+			],
+			[
+				"ge",
+				"getLastActiveRow"
+			],
+			[
+				"row",
+				"rowTier"
+			],
+			[
+				"tree",
+				"treeTotalPoints"
+			],
+			[
+				"m",
+				"masteryCurrentPoints"
+			],
+			[
+				"this",
+				"thisRowPointsTotal"
+			],
+			[
+				"po",
+				"pointTotal"
+			],
+			[
+				"point",
+				"pointTotal"
+			],
+			[
+				"off",
+				"offensiveTier6Total"
+			],
+			[
+				"o",
+				"offensiveTier5Total"
 			],
 			[
 				"of",
+				"offensiveTier5Total"
+			],
+			[
+				"re",
+				"masteryRequiresPoints"
+			],
+			[
+				"offe",
+				"offensiveTier1Total"
+			],
+			[
+				"cu",
+				"currentRow"
+			],
+			[
+				"curr",
+				"currentRow"
+			],
+			[
+				"mase",
+				"masteryCurrentPoints"
+			],
+			[
+				"return",
+				"returnPoint"
+			],
+			[
+				"remo",
+				"removePoint"
+			],
+			[
+				"offen",
+				"offensivePointTotal"
+			],
+			[
+				"active",
+				"activeRow"
+			],
+			[
+				"a",
+				"activeRow"
+			],
+			[
+				"ro",
+				"rowRequiresPoints"
+			],
+			[
+				"tier",
 				"offensiveTier1Total"
 			],
 			[
@@ -20,47 +132,11 @@
 				"currentTier"
 			],
 			[
-				"a",
-				"activeTier"
-			],
-			[
-				"get",
-				"getActiveTier"
-			],
-			[
-				"row",
-				"rowReqiuresPoints"
-			],
-			[
-				"off",
-				"offensiveTier1Total"
-			],
-			[
 				"requi",
 				"requiredPointsTotal"
 			],
 			[
-				"o",
-				"offensiveTier3Total"
-			],
-			[
-				"ro",
-				"requiredPointsTotal"
-			],
-			[
-				"mast",
-				"masteryAvailable"
-			],
-			[
 				"offens",
-				"offensiveTier1Total"
-			],
-			[
-				"mastery",
-				"masteryAncor"
-			],
-			[
-				"offen",
 				"offensiveTier1Total"
 			],
 			[
@@ -107,15 +183,18 @@
 			"file": "app/views/masteries/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 14217,
+				"buffer_size": 14112,
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "$(document).ready(function (){\n\n	//Global Presets\n	rowLockCheck('offense', 0);\n	rowLockCheck('defense', 0);\n	rowLockCheck('utility', 0);\n	var remainingPoints = 30;\n	updateRemainingPoints(remainingPoints);\n\n	$( '.container' )\n	.bind('contextmenu', function(){\n		return false;\n	});\n\n	//On Click Listener\n	$( '.masteryAncor' )\n	.mousedown(function(event) {\n		//Stop browser propagation and prevent default actions when clicking these links\n		event.stopPropagation();\n		event.preventDefault();\n\n		//Find and set all of the attributes relative to the mastery that was clicked\n		var tree = $(this).closest('.tree').attr('id'); //Get the tree we are in\n		var row = $(this).closest('.row'); //Get the row we are in\n		var rowTier = row.data('tier'); //Get the tier of the row we are in\n		var thisRowPointsTotal = getRowPointTotal(tree, rowTier); //Get the row's total points\n		var lastActiveRow = getLastActiveRow(tree); //Get the last row with points in it\n		var treeTotalPoints = getTreeTotalPoints(tree); //Get this tree's total points\n		var mastery = $(this).closest('.mastery'); //Get the mastery we are clicking the ancor for\n		if (mastery.attr('id') == undefined){ //If the master doesn't have the mastery class it has the masteryAvailable class instead, find it\n			mastery = $(this).closest('.masteryAvailable');\n		}\n		var masteryRequiresPoints = getMasteryRequiredPoints(rowTier); //Get the minimum points required to active masteries in this tier\n		var masteryCurrentPoints = +mastery.find('.currentPoints').text(); //Get the current points spent on this mastery\n		var masteryMaxPoints = mastery.data('max-points'); //Get the maximum points allowed to be spent on this mastery\n		remainingPoints = +$('.remainingPoints').text(); //Set the remaining points variable again within this scope to pass onto add and remove point functions\n\n		//Determine if the click was a left click or right click and do something\n		switch (event.which) {\n        case 1: //This is a left click\n            addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints);\n            break;\n        case 3: //This is a right click\n        	removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n    	}\n	});\n\n	//Where the magic happens\n\n	function removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints){\n		mastery.find('.currentPoints').text(masteryCurrentPoints - 1); //Reduce the current points spent on this mastery by 1\n		treeTotalPoints = getTreeTotalPoints(tree); //Get the total points again for this tree (after the subtraction)\n		remainingPoints++; //Add a point to the remaining points\n		updateRemainingPoints(remainingPoints); //Update the remaining points\n		rowLockCheck(tree, treeTotalPoints); //Update the row styling for this tree based on the remaining points in the tree\n		lastActiveRow = getLastActiveRow(tree); //Set the last active for this tree after all changes have been made\n	}\n\n	function removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints){\n		/******************************************************************************************************************************************************************\n		This function checks the rules before calling the remove point function. Basically, each tier requires x amount of points spent in the tree to be active. However,\n		Tier 1 must always have 4 points and the tiers before the last active tier must have a combined total point value greater than the minimum points needed to active\n		the last tier. To me this looks ugly, I'm not sure of a better way to approach the problem at this stage.\n		********************************************************************************************************************************************************************/\n\n		switch (lastActiveRow){\n		/*Each case represents the last tier with a point spent on it. The if statements represent trying to remove a point from a previous tier and the arguments verify\n		that doing so is within the rules described above */\n		case 1:\n			if(rowTier == 1 && masteryCurrentPoints > 0){ \n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		\n		case 2:\n			masteryRequiresPoints = getMasteryRequiredPoints(2);\n			if(rowTier == 1 && masteryCurrentPoints > 0 && thisRowPointsTotal > masteryRequiresPoints){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier == 2 && masteryCurrentPoints > 0){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		\n		case 3:\n			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2);\n			masteryRequiresPoints = getMasteryRequiredPoints(3);\n			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier == 2 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier == 3 && masteryCurrentPoints > 0){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		case 4:\n			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3);\n			masteryRequiresPoints = getMasteryRequiredPoints(4);\n			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier >= 2 && rowTier <= 3 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier == 4 && masteryCurrentPoints > 0){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		case 5:\n			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3) + getRowPointTotal(tree, 4);\n			masteryRequiresPoints = getMasteryRequiredPoints(5);\n			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier >= 2 && rowTier <= 4 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier == 5 && masteryCurrentPoints > 0){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		case 6:\n			previousRowTotal = getRowPointTotal(tree, 1) + getRowPointTotal(tree, 2) + getRowPointTotal(tree, 3) + getRowPointTotal(tree, 4) + getRowPointTotal(tree, 5);\n			masteryRequiresPoints = getMasteryRequiredPoints(6);\n			if(rowTier == 1 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints && thisRowPointsTotal > 4){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}else if(rowTier >= 2 && rowTier <= 5 && masteryCurrentPoints > 0 && previousRowTotal > masteryRequiresPoints){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}3else if(rowTier == 6 && masteryCurrentPoints > 0){\n				removePoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);\n			}\n			break;\n		}\n	}\n\n	function addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints){\n		if(masteryCurrentPoints < masteryMaxPoints && treeTotalPoints >= masteryRequiresPoints && remainingPoints > 0){ //Simple check to make sure adding a point makes sense\n			mastery.find('.currentPoints').text(masteryCurrentPoints + 1); //Find the current spent points and increase it by 1.\n			treeTotalPoints = getTreeTotalPoints(tree); //Calculate the new tree total points spent (after the addition)\n			remainingPoints--; //Remove a point from the total remaining points\n			updateRemainingPoints(remainingPoints); //Update the remaining points\n			rowLockCheck(tree, treeTotalPoints); //Update the row styling for this tree based on the remaining points in the tree\n			lastActiveRow = getLastActiveRow(tree); //Set the last active for this tree after all changes have been made\n		}\n	}\n\n	function updateRemainingPoints(remainingPoints){\n		$('.remainingPoints').text(remainingPoints);\n	}\n\n	function rowLockCheck(tree, treeTotalPoints){\n		//Simple rule set for styling the rows based on points spent in the tree, one thing to note was I had to first reset the trees to the mastery class before this would work on each call\n		$('.tree#'+tree).children('.row').find('.masteryAvailable').removeClass('masteryAvailable').addClass('mastery');\n		switch (true) {\n		case (treeTotalPoints >= 0 && treeTotalPoints < 4):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			break;\n\n		case (treeTotalPoints >= 4 && treeTotalPoints < 8):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			break;\n\n		case (treeTotalPoints >= 8 && treeTotalPoints < 12):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			break;\n\n		case (treeTotalPoints >= 12 && treeTotalPoints < 16):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			break;\n\n		case (treeTotalPoints >= 16 && treeTotalPoints < 20):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('masteryAvailable').addClass('mastery');\n			});\n			break;\n\n		case (treeTotalPoints >= 20):\n			$('.tree#'+tree).children(\"[data-tier='1']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='2']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='3']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='4']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='5']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			$('.tree#'+tree).children(\"[data-tier='6']\").find('.mastery').each(function(){\n				$(this).removeClass('mastery').addClass('masteryAvailable');\n			});\n			\n		}\n	}\n\n	function getMasteryRequiredPoints(rowTier){\n		//Rules for how many points are required to be spent in a tree to activate each tier within the tree\n		var masteryRequiresPoints = 0;\n		if(rowTier == 1){\n			masteryRequiresPoints = 0;\n		}else if(rowTier == 2){\n			masteryRequiresPoints = 4;\n		}else if(rowTier == 3){\n			masteryRequiresPoints = 8;\n		}else if(rowTier == 4){\n			masteryRequiresPoints = 12;\n		}else if(rowTier == 5){\n			masteryRequiresPoints = 16;\n		}else if(rowTier == 6){\n			masteryRequiresPoints = 20;\n		}\n		return masteryRequiresPoints;\n	}\n\n	function getTreeTotalPoints(tree){\n		//Function that counts the total points spent on each mastery then returns their sum for each tree\n		var treeTotalPoints = 0;\n		$('.tree#'+tree).children('.row').each(function(){\n			rowTier = $(this).data('tier');\n			var rowPoints = getRowPointTotal(tree, rowTier);\n			treeTotalPoints = treeTotalPoints + rowPoints;\n		});\n		var currentPoints = +$('.tree#'+tree).children('.treeTitle').find('.currentPoints').text(treeTotalPoints);\n\n		return treeTotalPoints;\n	}\n\n	function getLastActiveRow(tree){\n		//Functions that checks each mastery for points spent and updates the lastActiveRow variable to reflect which tier the deepest points were spent on\n		var lastActiveRow;\n		$('.tree#'+tree).children('.row').find('.currentPoints').each(function(){\n			var points = +$(this).text();\n			if(points > 0){\n				lastActiveRow = $(this).closest('.row').data('tier');\n			}\n		});\n		return lastActiveRow;\n	}\n\n	function getRowPointTotal(tree, rowTier){\n		//Function that counts a given row's total points spent, needed to verify the points removal rules\n		var pointTotal = 0;\n		$('.tree#'+tree).children(\"[data-tier='\" + rowTier + \"']\").find('.currentPoints').each(function(){\n			var points = +$(this).text();\n			pointTotal = pointTotal + points;\n		});\n		return pointTotal;\n	}\n});",
 			"file": "app/assets/javascripts/masteries.js",
+			"file_size": 18721,
+			"file_write_time": 130336920519554535,
 			"settings":
 			{
-				"buffer_size": 1737,
+				"buffer_size": 18392,
 				"line_ending": "Windows"
 			}
 		},
@@ -123,17 +202,21 @@
 			"file": "app/assets/stylesheets/masteries.css.scss",
 			"settings":
 			{
-				"buffer_size": 15618,
-				"line_ending": "Unix"
+				"buffer_size": 15720,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 311.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
 			[
 				"pack",
 				"Package Control: Install Package"
@@ -143,7 +226,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 400.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -159,11 +242,12 @@
 		"show_minimap": false,
 		"show_open_files": false,
 		"show_tabs": false,
-		"side_bar_visible": false,
+		"side_bar_visible": true,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
+		"/D/Code/league_masteries/app/assets/stylesheets/masteries.css.scss",
 		"/D/Code/league_masteries/app/assets/javascripts/application.js",
 		"/D/Code/league_masteries/app/assets/javascripts/masteries.js",
 		"/D/Code/league_masteries/app/controllers/masteries_controller.rb",
@@ -197,7 +281,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -211,6 +295,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"returnPoint",
+			"addPoint",
+			"offensive",
+			"offense",
+			"returnPoint",
+			"addPoint",
+			"offensive",
+			"offense",
+			"offensive",
+			"addPoint",
+			"returnPoint",
+			"addPoint",
+			"offensive",
+			"offense",
 			"offensiveTier1Total",
 			"requiresPoints",
 			"currentPoints",
@@ -234,11 +332,26 @@
 			"<div class=\"points\">0 / 1</div>"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"returnPointOffense",
+			"addPointOffense",
+			"defensive",
+			"defense",
+			"returnPointDefense",
+			"returnPointOffense",
+			"addPointOffense",
+			"defensive",
+			"defense",
+			"defensive",
+			"addPointOffense",
+			"returnPointOffense",
+			"addPointOffense",
+			"defensive",
+			"defense",
 			"masteryRequiresPoints",
 			"masteryCurrentPoints",
 			"masteryMaxPoints",
@@ -274,15 +387,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14217,
+						"buffer_size": 14112,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1117,
-								1117
+								111,
+								111
 							]
 						],
 						"settings":
@@ -294,7 +407,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -303,22 +416,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1737,
+						"buffer_size": 18392,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1477,
-								1477
+								8988,
+								8988
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -328,29 +441,30 @@
 				{
 					"buffer": 2,
 					"file": "app/assets/stylesheets/masteries.css.scss",
-					"semi_transient": false,
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 15618,
+						"buffer_size": 15720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10134,
-								10134
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -394,7 +508,7 @@
 	"project": "league_masteries.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

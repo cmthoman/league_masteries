@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="remainingPointsContainer">Remaining Points: <span class="remainingPoints"></span></div>
 	<div class="tree" id="offense">
-		<div class="require" id="bruteForceMartialMastery"></div>
-		<div class="require" id="butcherFeast"></div>
-		<div class="require" id="mentalForceArcaneMastery"></div>
-		<div class="require" id="spellWeavingBladeWeaving"></div>
-		<div class="require" id="executionerDangerousGame"></div>
+		<div class="require" id="bruteForceMartialMastery" data-mastery ="BruteForce"></div>
+		<div class="require" id="butcherFeast" data-mastery ="Butcher"></div>
+		<div class="require" id="mentalForceArcaneMastery" data-mastery ="MentalForce"></div>
+		<div class="require" id="spellWeavingBladeWeaving" data-mastery ="SpellWeaving"></div>
+		<div class="require" id="executionerDangerousGame" data-mastery ="Executioner"></div>
 		<div class="treeTitle" id="offense">OFFENSE <span class="currentPoints">0</span></div>
 		<div class="row" data-tier="1">
 			<div class="mastery" id="DoubleEdgeSword" data-max-points="1">
@@ -58,7 +58,7 @@
 					<div class="points"><span class="currentPoints">0</span> / 1</div>
 				</a>
 			</div>
-			<div class="mastery" id="MartialMastery" data-max-points="1">
+			<div class="mastery" id="MartialMastery" data-max-points="1" data-requires-mastery="BruteForce">
 				<a href="#" class="masteryAncor">
 					<div class="points"><span class="currentPoints">0</span> / 1</div>
 				</a>
@@ -179,7 +179,7 @@
 					<div class="points"><span class="currentPoints">0</span> / 1</div>
 				</a>
 			</div>
-			<div class="mastery" id="Juggernaut" data-max-points="1">
+			<div class="mastery" id="Juggernaut" data-max-points="1" data-requires-mastery="VeteransScars">
 				<a href="#" class="masteryAncor">
 					<div class="points"><span class="currentPoints">0</span> / 1</div>
 				</a>
