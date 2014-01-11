@@ -20,16 +20,16 @@ $ffGrayscaleOff: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/sv
 
 .toolTip{
 	position: absolute;
-	width: 300px;
+	width: 270px;
 	background: black;
 	border: 2px solid gray;
 	display: none;
 	z-index: 2;
+	padding: 5px;
 }
 
 .toolTipTitle{
 	position: relative;
-	width: 300px;
 	font-size: 16px;
 	color: #D13F0E;
 	padding: 2px 0 2px 5px;

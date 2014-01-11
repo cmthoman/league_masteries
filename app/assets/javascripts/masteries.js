@@ -27,7 +27,7 @@ $(document).ready(function (){
 			updateToolTip($(this));
 		});
 		$(this).mousemove(function(){
-			$('.toolTip').css({'left' : currentMousePos.x + 10 , 'top' : currentMousePos.y + 10});
+			$('.toolTip').css({'left' : currentMousePos.x + 15 , 'top' : currentMousePos.y + 15});
 		});
 	})
 	.mouseleave(function(){
@@ -88,12 +88,17 @@ $(document).ready(function (){
 		if(mastery.attr('id') == undefined){
 			mastery = $(that).closest('.masteryAvailable');
 		}
+		var tree = mastery.closest('.tree').attr('id');
+		var rowTier = mastery.closest('.row').data('tier');
 		var masteryName = mastery.attr('id');
 		var title = $('.title#'+masteryName).html();
 		var reqs = $('.reqs#'+masteryName).html();
 		var currentRank = +mastery.find('.currentPoints').text();
 		var maxRank = mastery.data('max-points');
 		var desc;
+		var masteryReqs = testRequiredMastery(mastery);
+		var tierReqs = getMasteryRequiredPoints(rowTier);
+		var treeTotalPoints = getTreeTotalPoints(tree) + 1;
 		if(currentRank == 0){
 			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='0']").html();
 		}else if(currentRank == 1){
@@ -107,7 +112,11 @@ $(document).ready(function (){
 		}
 		$('.toolTipTitle').text(title);
 		$('.toolTipDesc').html(desc);
-		$('.toolTipReqs').html(reqs);
+		if(masteryReqs == false || treeTotalPoints <= tierReqs){
+			$('.toolTipReqs').html(reqs);
+		}else{
+			$('.toolTipReqs').html("");
+		}
 		$('.toolTip').find('.maxRank').text(maxRank);
 		$('.toolTip').find('.currentRank').text(currentRank);
 		$('.toolTip').show();
