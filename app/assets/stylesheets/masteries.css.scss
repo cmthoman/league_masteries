@@ -14,6 +14,10 @@
 $ffGrayscaleOn: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale";
 $ffGrayscaleOff: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale";
 
+body{
+	font-family: Verdana, Verdana, Geneva, sans-serif;
+}
+
 .title , .desc , .reqs{
 	display: none;
 }
@@ -26,6 +30,7 @@ $ffGrayscaleOff: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/sv
 	display: none;
 	z-index: 2;
 	padding: 5px;
+	font-family: Verdana, Verdana, Geneva, sans-serif;
 }
 
 .toolTipTitle{
@@ -37,19 +42,19 @@ $ffGrayscaleOff: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/sv
 }
 
 .toolTipRank{
-	font-size: 12px;
+	font-size: 14px;
 	color: #93C203;
 	padding: 2px 0 2px 5px;
 }
 
 .toolTipDesc{
-	font-size: 12px;
+	font-size: 14px;
 	color: white;
 	padding: 2px 0 2px 5px;
 }
 
 .toolTipReqs{
-	font-size: 12px;
+	font-size: 14px;
 	color: red;
 	padding: 2px 0 2px 5px;
 }
