@@ -89,21 +89,21 @@ $(document).ready(function (){
 			mastery = $(that).closest('.masteryAvailable');
 		}
 		var masteryName = mastery.attr('id');
-		var title = $('.title#'+masteryName).text();
+		var title = $('.title#'+masteryName).html();
 		var reqs = $('.reqs#'+masteryName).html();
-		var currentRank = mastery.find('.currentPoints').text();
+		var currentRank = +mastery.find('.currentPoints').text();
 		var maxRank = mastery.data('max-points');
+		var desc;
 		if(currentRank == 0){
-			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='0'").html();
-		}
-		if(currentRank == 1){
-			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='1'").html();
-		}else if (currentRank == 2){
-			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='2'").html();
-		}else if (currentRank == 3){
-			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='3'").html();
-		}else if (currentRank == 4){
-			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='4'").html();
+			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='0']").html();
+		}else if(currentRank == 1){
+			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='1']").html();
+		}else if(currentRank == 2){
+			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='2']").html();
+		}else if(currentRank == 3){
+			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='3']").html();
+		}else if(currentRank == 4){
+			desc = $("[class='desc'][id='"+masteryName+"'][data-rank='4']").html();
 		}
 		$('.toolTipTitle').text(title);
 		$('.toolTipDesc').html(desc);
