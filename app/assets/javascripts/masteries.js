@@ -7,6 +7,13 @@ $(document).ready(function (){
 	var remainingPoints = 30;
 	updateRemainingPoints(remainingPoints);
 
+	//Mouse Position
+	var currentMousePos = { x: 0, y: 0 };
+    $(document).mousemove(function(event) {
+        currentMousePos.x = event.pageX;
+        currentMousePos.y = event.pageY;
+    });
+
 	$( '.container' )
 	.bind('contextmenu', function(){
 		return false;
@@ -14,6 +21,18 @@ $(document).ready(function (){
 
 	//On Click Listener
 	$( '.masteryAncor' )
+	.mouseenter(function(){
+		updateToolTip($(this));
+		$(this).mousedown(function(){
+			updateToolTip($(this));
+		});
+		$(this).mousemove(function(){
+			$('.toolTip').css({'left' : currentMousePos.x + 10 , 'top' : currentMousePos.y + 10});
+		});
+	})
+	.mouseleave(function(){
+		$('.toolTip').hide();
+	})
 	.mousedown(function(event) {
 		//Stop browser propagation and prevent default actions when clicking these links
 		event.stopPropagation();
@@ -63,6 +82,36 @@ $(document).ready(function (){
 	});
 
 	//Where the magic happens
+
+	function updateToolTip(that){
+		var mastery = $(that).closest('.mastery');
+		if(mastery.attr('id') == undefined){
+			mastery = $(that).closest('.masteryAvailable');
+		}
+		var masteryName = mastery.attr('id');
+		var title = $('.title#'+masteryName).text();
+		var reqs = $('.reqs#'+masteryName).html();
+		var currentRank = mastery.find('.currentPoints').text();
+		var maxRank = mastery.data('max-points');
+		if(currentRank == 0){
+			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='0'").html();
+		}
+		if(currentRank == 1){
+			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='1'").html();
+		}else if (currentRank == 2){
+			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='2'").html();
+		}else if (currentRank == 3){
+			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='3'").html();
+		}else if (currentRank == 4){
+			var desc = $("[class='desc'][id='"+masteryName+"'][data-rank='4'").html();
+		}
+		$('.toolTipTitle').text(title);
+		$('.toolTipDesc').html(desc);
+		$('.toolTipReqs').html(reqs);
+		$('.toolTip').find('.maxRank').text(maxRank);
+		$('.toolTip').find('.currentRank').text(currentRank);
+		$('.toolTip').show();
+	}
 
 	function testRequiredMastery(mastery){
 		var requiresMastery = mastery.data('requires-mastery');
