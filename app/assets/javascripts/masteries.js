@@ -45,6 +45,22 @@ $(document).ready(function (){
     	}
 	});
 
+	$( '.resetPointsButton' )
+	.mousedown(function(){
+		$('.tree').find('.currentPoints').each(function(){
+			$(this).text(0);
+		});
+		$('.tree').find('.masteryAvailable').each(function(){
+			var tree = $(this).closest('.tree').attr('id');
+			var mastery = $(this);
+			updateMasteryRequirePaths(mastery, tree, 0);
+		});
+		rowLockCheck('offense', 0);
+		rowLockCheck('defense', 0);
+		rowLockCheck('utility', 0);
+		updateRemainingPoints(30);
+	});
+
 	//Where the magic happens
 
 	function testRequiredMastery(mastery){
@@ -60,8 +76,7 @@ $(document).ready(function (){
 			}		
 		}else{
 			return true;
-		}
-		
+		}	
 	}
 
 	function checkRequiredMastery(mastery, rowTier){

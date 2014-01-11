@@ -30,6 +30,24 @@ $ffGrayscaleOff: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/sv
 	font-weight: bold;
 }
 
+.resetPointsButton{
+	position: absolute;
+	top: 475px;
+	width: 150px;
+	height: 30px;
+	border: 1px solid black;
+	background: #8B3323;
+	text-align: center;
+	cursor: pointer;
+	#button{
+		color: white;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 5px auto 0 auto;
+
+	}
+}
+
 .tree {
 	position: relative;
 	width: 255px;
