@@ -20,6 +20,7 @@ $(document).ready(function (){
 		event.preventDefault();
 
 		//Find and set all of the attributes relative to the mastery that was clicked
+		var clickType = event.which;
 		var tree = $(this).closest('.tree').attr('id'); //Get the tree we are in
 		var row = $(this).closest('.row'); //Get the row we are in
 		var rowTier = row.data('tier'); //Get the tier of the row we are in
@@ -38,10 +39,10 @@ $(document).ready(function (){
 		//Determine if the click was a left click or right click and do something
 		switch (event.which) {
         case 1: //This is a left click
-            addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints);
+            addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints, clickType);
             break;
         case 3: //This is a right click
-        	removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints);
+        	removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints, clickType);
     	}
 	});
 
@@ -79,8 +80,8 @@ $(document).ready(function (){
 		}	
 	}
 
-	function checkRequiredMastery(mastery, rowTier){
-		if(event.which == 1){
+	function checkRequiredMastery(mastery, rowTier, clickType){
+		if(clickType == 1){
 			var requiresMastery = mastery.data('requires-mastery');
 			if(requiresMastery != undefined){
 				var requiredMastery = mastery.closest('.tree').find('#'+requiresMastery);
@@ -94,7 +95,7 @@ $(document).ready(function (){
 			}else{
 				return true;
 			}
-		}else if(event.which == 3){
+		}else if(clickType == 3){
 			var nextRowTier = rowTier + 1;
 			var nextRow = mastery.closest('.row').siblings("[data-tier='"+nextRowTier+"']");
 			var dependency = nextRow.children("[data-requires-mastery='"+mastery.attr('id')+"']");
@@ -147,13 +148,13 @@ $(document).ready(function (){
 		lastActiveRow = getLastActiveRow(tree); //Set the last active for this tree after all changes have been made
 	}
 
-	function removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints){
+	function removePointRuleCheck(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, lastActiveRow, thisRowPointsTotal, rowTier, remainingPoints, clickType){
 		/******************************************************************************************************************************************************************
 		This function checks the rules before calling the remove point function. Basically, each tier requires x amount of points spent in the tree to be active. However,
 		Tier 1 must always have 4 points and the tiers before the last active tier must have a combined total point value greater than the minimum points needed to active
 		the last tier. To me this looks ugly, I'm not sure of a better way to approach the problem at this stage.
 		********************************************************************************************************************************************************************/
-		var masteryCheck = checkRequiredMastery(mastery,rowTier);
+		var masteryCheck = checkRequiredMastery(mastery,rowTier, clickType);
 		//alert(masteryCheck);
 		switch (lastActiveRow){
 		/*Each case represents the last tier with a point spent on it. The if statements represent trying to remove a point from a previous tier and the arguments verify
@@ -220,8 +221,8 @@ $(document).ready(function (){
 		}
 	}
 
-	function addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints){
-		var masteryCheck = checkRequiredMastery(mastery);
+	function addPoint(mastery, tree, masteryMaxPoints, masteryCurrentPoints, treeTotalPoints, masteryRequiresPoints, remainingPoints, clickType){
+		var masteryCheck = checkRequiredMastery(mastery, null, clickType);
 		if(masteryCurrentPoints < masteryMaxPoints && treeTotalPoints >= masteryRequiresPoints && remainingPoints > 0 && masteryCheck == true){ //Simple check to make sure adding a point makes sense
 			mastery.find('.currentPoints').text(masteryCurrentPoints + 1); //Find the current spent points and increase it by 1.
 			treeTotalPoints = getTreeTotalPoints(tree); //Calculate the new tree total points spent (after the addition)
