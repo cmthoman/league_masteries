@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="remainingPointsContainer">Remaining Points: <span class="remainingPoints"></span></div>
-	<div class="resetPointsButton"><div id="button">RESET POINTS</div></div>
+	<div class="resetPointsButton"><div id="button">Return Points</div></div>
 	<div class="tree" id="offense">
 		<div class="require" id="bruteForceMartialMastery" data-mastery ="BruteForce"></div>
 		<div class="require" id="butcherFeast" data-mastery ="Butcher"></div>
@@ -503,25 +503,204 @@
 <div class="reqs" id="Recovery"></div>
 
 <div class="title" id="EnchantedArmor">Enchanted Armor</div>
-<div class="desc" id="EnchantedArmor" data-rank="0">Increases your bonus armor and magic resistance by 2.5%<div>
+<div class="desc" id="EnchantedArmor" data-rank="0">Increases your bonus armor and magic resistance by 2.5%</div>
 <div class="desc" id="EnchantedArmor" data-rank="1">Increases your bonus armor and magic resistance by 2.5%<br/><br/>Next Rank:<br/>Increases your bonus armor and magic resistance by 5%</div>
 <div class="desc" id="EnchantedArmor" data-rank="2">Increases your bonus armor and magic resistance by 5%</div>
 <div class="reqs" id="EnchantedArmor"></div>
 
 <div class="title" id="ToughSkin">Tough Skin</div>
-<div class="desc" id="ToughSkin" data-rank="0">Reduces damage taken by neutral monsters by 1<br/><br/>This does not affect lane minions<div>
-<div class="desc" id="ToughSkin" data-rank="1">Reduces damage taken by neutral monsters by 1<br/><br/>This does not affect lane minions<br/><br/>Next Rank:<br/>Reduces damage taken by neutral monsters by 2<div>
+<div class="desc" id="ToughSkin" data-rank="0">Reduces damage taken by neutral monsters by 1<br/><br/>This does not affect lane minions</div>
+<div class="desc" id="ToughSkin" data-rank="1">Reduces damage taken by neutral monsters by 1<br/><br/>This does not affect lane minions<br/><br/>Next Rank:<br/>Reduces damage taken by neutral monsters by 2</div>
 <div class="desc" id="ToughSkin" data-rank="2">Reduces damage taken by neutral monsters by 2<br/><br/>This does not affect lane minions</div>
 <div class="reqs" id="ToughSkin"></div>
 
 <div class="title" id="Unyielding">Unyielding</div>
-<div class="desc" id="Unyielding" data-rank="0">Melee - Reduces all incoming damage from champions by 2<br/><br/>Ranged - Reduces all incoming damage from champions by 1<div>
-<div class="desc" id="Unyielding" data-rank="1">Melee - Reduces all incoming damage from champions by 2<br/><br/>Ranged - Reduces all incoming damage from champions by 1<div>
+<div class="desc" id="Unyielding" data-rank="0">Melee - Reduces all incoming damage from champions by 2<br/><br/>Ranged - Reduces all incoming damage from champions by 1</div>
+<div class="desc" id="Unyielding" data-rank="1">Melee - Reduces all incoming damage from champions by 2<br/><br/>Ranged - Reduces all incoming damage from champions by 1</div>
 <div class="reqs" id="Unyielding">Requries 4 points in Defense<br/>Requires 2 points in Block</div>
 
 <div class="title" id="VeteransScars">Veteran's Scars</div>
 <div class="desc" id="VeteransScars" data-rank="0">+12 Health<div>
-<div class="desc" id="VeteransScars" data-rank="1">+12 Health<br/><br/>Next Rank:<br/>+24 Health<div>
-<div class="desc" id="VeteransScars" data-rank="2">+24 Health<br/><br/>Next Rank:<br/>+36 Health<div>
-<div class="desc" id="VeteransScars" data-rank="3">+36 Health<div>
+<div class="desc" id="VeteransScars" data-rank="1">+12 Health<br/><br/>Next Rank:<br/>+24 Health</div>
+<div class="desc" id="VeteransScars" data-rank="2">+24 Health<br/><br/>Next Rank:<br/>+36 Health</div>
+<div class="desc" id="VeteransScars" data-rank="3">+36 Health</div>
 <div class="reqs" id="VeteransScars">Requries 4 points in Defense</div>
+
+<div class="title" id="BladedArmor">Bladed Armor</div>
+<div class="desc" id="BladedArmor" data-rank="0">Taking Basic Attack Damage from neutral monsters cause them to bleed, dealing damage equal to 1% of their current Health each second<br/><br/>This does not work against lane minions</div>
+<div class="desc" id="BladedArmor" data-rank="1">Taking Basic Attack Damage from neutral monsters cause them to bleed, dealing damage equal to 1% of their current Health each second<br/><br/>This does not work against lane minions</div>
+<div class="reqs" id="BladedArmor">Requries 4 points in Defense<br/>Requires 2 points in Tough Skin</div>
+
+<div class="title" id="Oppression">Oppression</div>
+<div class="desc" id="Oppression" data-rank="0">Reduces damage taken by 3% from enemies that have impaired movement (slows, snares, taunts, stuns, etc.)</div>
+<div class="desc" id="Oppression" data-rank="1">Reduces damage taken by 3% from enemies that have impaired movement (slows, snares, taunts, stuns, etc.)</div>
+<div class="reqs" id="Oppression">Requries 8 points in Defense</div>
+
+<div class="title" id="Juggernaut">Juggernaut</div>
+<div class="desc" id="Juggernaut" data-rank="0">+3% Maximum Health</div>
+<div class="desc" id="Juggernaut" data-rank="1">+3% Maximum Health</div>
+<div class="reqs" id="Juggernaut">Requries 8 points in Defense<br/>Requires 3 points in Veteran's Scars</div>
+
+<div class="title" id="Hardiness">Hardiness</div>
+<div class="desc" id="Hardiness" data-rank="0">+2 Armor</div>
+<div class="desc" id="Hardiness" data-rank="1">+2 Armor<br/><br/>Next Rank:<br/>+3.5 Armor</div>
+<div class="desc" id="Hardiness" data-rank="2">+3.5 Armor<br/><br/>Next Rank:<br/>+5 Armor</div>
+<div class="desc" id="Hardiness" data-rank="3">+5 Armor</div>
+<div class="reqs" id="Hardiness">Requries 8 points in Defense</div>
+
+<div class="title" id="Resistance">Resistance</div>
+<div class="desc" id="Resistance" data-rank="0">+2 Magic Resistance<div>
+<div class="desc" id="Resistance" data-rank="1">+2 Magic Resistance<br/><br/>Next Rank:<br/>+3.5 Magic Resistance</div>
+<div class="desc" id="Resistance" data-rank="2">+3.5 Magic Resistance<br/><br/>Next Rank:<br/>+5 Magic Resistance</div>
+<div class="desc" id="Resistance" data-rank="3">+5 Magic Resistance</div>
+<div class="reqs" id="Resistance">Requries 8 points in Defense</div>
+
+<div class="title" id="Perseverance">Perseverance</div>
+<div class="desc" id="Perseverance" data-rank="0">Regenerates +0.7% missing Health every 5 seconds</div>
+<div class="desc" id="Perseverance" data-rank="1">Regenerates +0.7% missing Health every 5 seconds<br/><br/>Next Rank:<br/>Regenerates +1.35% missing Health every 5 seconds</div>
+<div class="desc" id="Perseverance" data-rank="2">Regenerates +1.35% missing Health every 5 seconds<br/><br/>Next Rank:<br/>Regenerates +2% missing Health every 5 seconds<div/>
+<div class="desc" id="Perseverance" data-rank="3">Regenerates +2% missing Health every 5 seconds</div>
+<div class="reqs" id="Perseverance">Requries 12 points in Defense</div>
+
+<div class="title" id="Swiftness">Swiftness</div>
+<div class="desc" id="Swiftness" data-rank="0">Reduces the effectiveness of slows by 10%</div>
+<div class="desc" id="Swiftness" data-rank="0">Reduces the effectiveness of slows by 10%</div>
+<div class="reqs" id="Swiftness">Requries 12 points in Defense</div>
+
+<div class="title" id="ReinforcedArmor">Reinforced Armor</div>
+<div class="desc" id="ReinforcedArmor" data-rank="0">Reduces damage taken by critical strikes by 10%</div>
+<div class="desc" id="ReinforcedArmor" data-rank="1">Reduces damage taken by critical strikes by 10%</div>
+<div class="reqs" id="ReinforcedArmor">Requries 12 points in Defense<br/>Requires 3 points in Hardiness</div>
+
+<div class="title" id="Evasive">Evasive</div>
+<div class="desc" id="Evasive" data-rank="0">Reduces damage taken by 4% from Area of Effect magic damage</div>
+<div class="desc" id="Evasive" data-rank="1">Reduces damage taken by 4% from Area of Effect magic damage</div>
+<div class="reqs" id="Evasive">Requries 12 points in Defense<br/>Requires 3 points in Resistance</div>
+
+<div class="title" id="SecondWind">Second Wind</div>
+<div class="desc" id="SecondWind" data-rank="0">Increases self-healing, Health Regen, Lifesteal, and Spellvamp by 10% when below 25% Health</div>
+<div class="desc" id="SecondWind" data-rank="1">Increases self-healing, Health Regen, Lifesteal, and Spellvamp by 10% when below 25% Health</div>
+<div class="reqs" id="SecondWind">Requries 16 points in Defense<br/>Requires 3 points in Perseverance</div>
+
+<div class="title" id="LegendaryGuardian">LegendaryGuardian</div>
+<div class="desc" id="LegendaryGuardian" data-rank="0">+1 Armor and 0.5 Magic Resistance for each nearby enemy champion</div>
+<div class="desc" id="LegendaryGuardian" data-rank="1">+1 Armor and 0.5 Magic Resistance for each nearby enemy champion<br/><br/>Next Rank:<br/>+2 Armor and 1 Magic Resistance for each nearby enemy champion</div>
+<div class="desc" id="LegendaryGuardian" data-rank="2">+2 Armor and 1 Magic Resistance for each nearby enemy champion<br/><br/>Next Rank:<br/>+3 Armor and 1.5 Magic Resistance for each nearby enemy champion</div>
+<div class="desc" id="LegendaryGuardian" data-rank="3">+3 Armor and 1.5 Magic Resistance for each nearby enemy champion<br/><br/>Next Rank:<br/>+4 Armor and 2 Magic Resistance for each nearby enemy champion</div>
+<div class="desc" id="LegendaryGuardian" data-rank="4">+4 Armor and 2 Magic Resistance for each nearby enemy champion</div>
+<div class="reqs" id="LegendaryGuardian">Requries 16 points in Defense</div>
+
+<div class="title" id="RunicBlessing">Runic Blessing</div>
+<div class="desc" id="RunicBlessing" data-rank="0">Start the game with a 50 Health shield. This shield regenerates each time after respawning</div>
+<div class="desc" id="RunicBlessing" data-rank="1">Start the game with a 50 Health shield. This shield regenerates each time after respawning</div>
+<div class="reqs" id="RunicBlessing">Requries 16 points in Defense</div>
+
+<div class="title" id="Tenacious">Tenacious</div>
+<div class="desc" id="Tenacious" data-rank="0">Reduces the duration of crowd control effects by 15%</div>
+<div class="desc" id="Tenacious" data-rank="1">Reduces the duration of crowd control effects by 15%</div>
+<div class="reqs" id="Tenacious">Requries 20 points in Defense</div>
+
+<div class="title" id="Phasewalker">Phasewalker</div>
+<div class="desc" id="Phasewalker" data-rank="0">Reduces the casting time of Recall by 1 second<br/><br/>Dominion - Reduces the casting time of Enhanced Recall by 0.5 seconds</div>
+<div class="desc" id="Phasewalker" data-rank="1">Reduces the casting time of Recall by 1 second<br/><br/>Dominion - Reduces the casting time of Enhanced Recall by 0.5 seconds</div>
+<div class="reqs" id="Phasewalker"></div>
+
+<div class="title" id="FleetOfFoot">Fleet of Foot</div>
+<div class="desc" id="FleetOfFoot" data-rank="0">+0.5% Movement Speed</div>
+<div class="desc" id="FleetOfFoot" data-rank="1">+0.5% Movement Speed<br/><br/>Next Rank:<br/>+1% Movement Speed</div>
+<div class="desc" id="FleetOfFoot" data-rank="2">+1% Movement Speed<br/><br/>Next Rank:<br/>+1.5% Movement Speed</div>
+<div class="desc" id="FleetOfFoot" data-rank="3">+1.5% Movement Speed</div>
+<div class="reqs" id="FleetOfFoot"></div>
+
+<div class="title" id="Meditation">Meditation</div>
+<div class="desc" id="Meditation" data-rank="0">+1 Mana Regen per 5 seconds</div>
+<div class="desc" id="Meditation" data-rank="1">+1 Mana Regen per 5 seconds<br/><br/>Next Rank:<br/>+2 Mana Regen per 5 seconds</div>
+<div class="desc" id="Meditation" data-rank="2">+2 Mana Regen per 5 seconds<br/><br/>Next Rank:<br/>+3 Mana Regen per 5 seconds</div>
+<div class="desc" id="Meditation" data-rank="3">+3 Mana Regen per 5 seconds</div>
+<div class="reqs" id="Meditation"></div>
+
+<div class="title" id="Scout">Scout</div>
+<div class="desc" id="Scout" data-rank="0">Increases the cast range of trinket items by 15%</div>
+<div class="desc" id="Scout" data-rank="1">Increases the cast range of trinket items by 15%</div>
+<div class="reqs" id="Scout"></div>
+
+<div class="title" id="SummonersInsight">Summoner's Insight</div>
+<div class="desc" id="SummonersInsight" data-rank="0">Reduces the cooldown of Summoner Spells by 4%</div>
+<div class="desc" id="SummonersInsight" data-rank="1">Reduces the cooldown of Summoner Spells by 4%<br/><br/>Next Rank:<br/>Reduces the cooldown of Summoner Spells by 7%</div>
+<div class="desc" id="SummonersInsight" data-rank="2">Reduces the cooldown of Summoner Spells by 7%<br/><br/>Next Rank:<br/>Reduces the cooldown of Summoner Spells by 10%</div>
+<div class="desc" id="SummonersInsight" data-rank="1">Reduces the cooldown of Summoner Spells by 10%</div>
+<div class="reqs" id="SummonersInsight">Requires 4 points in Utility</div>
+
+<div class="title" id="StrengthOfSpirit">Strength of Spirit</div>
+<div class="desc" id="StrengthOfSpirit" data-rank="0">+1 Health Regen per 5 seconds for every 300 maximum Mana</div>
+<div class="desc" id="StrengthOfSpirit" data-rank="1">+1 Health Regen per 5 seconds for every 300 maximum Mana</div>
+<div class="reqs" id="StrengthOfSpirit">Requires 4 points in Utility<br/>Requires 3 points in Meditation</div>
+
+<div class="title" id="Alchemist">Alchemist</div>
+<div class="desc" id="Alchemist" data-rank="0">Increases the duration of potions and elixirs by 10%</div>
+<div class="desc" id="Alchemist" data-rank="1">Increases the duration of potions and elixirs by 10%</div>
+<div class="reqs" id="Alchemist">Requires 4 points in Utility</div>
+
+<div class="title" id="Greed">Greed</div>
+<div class="desc" id="Greed" data-rank="0">+0.5 Gold every 10 seconds</div>
+<div class="desc" id="Greed" data-rank="1">+0.5 Gold every 10 seconds<br/><br/>Next Rank:<br/>+1 Gold every 10 seconds</div>
+<div class="desc" id="Greed" data-rank="2">+1 Gold every 10 seconds<br/><br/>Next Rank:<br/>+1.5 Gold every 10 seconds</div>
+<div class="desc" id="Greed" data-rank="3">+1.5 Gold every 10 seconds</div>
+<div class="reqs" id="Greed">Requires 8 points in Utility</div>
+
+<div class="title" id="RunicAffinity">Runic Affinity</div>
+<div class="desc" id="RunicAffinity" data-rank="0">Increases the duration of shrine, relic, quest, and neutral monster buffs by 20%</div>
+<div class="desc" id="RunicAffinity" data-rank="1">Increases the duration of shrine, relic, quest, and neutral monster buffs by 20%</div>
+<div class="reqs" id="RunicAffinity">Requires 8 points in Utility</div>
+
+<div class="title" id="Vampirism">Vampirism</div>
+<div class="desc" id="Vampirism" data-rank="0">+1% Lifesteal and Spellvamp</div>
+<div class="desc" id="Vampirism" data-rank="1">+1% Lifesteal and Spellvamp<br/><br/>Next Rank:<br/>+2% Lifesteal and Spellvamp</div>
+<div class="desc" id="Vampirism" data-rank="2">+2% Lifesteal and Spellvamp<br/><br/>Next Rank:<br/>+3% Lifesteal and Spellvamp</div>
+<div class="desc" id="Vampirism" data-rank="3">+3% Lifesteal and Spellvamp</div>
+<div class="reqs" id="Vampirism">Requires 8 points in Utility</div>
+
+<div class="title" id="CulinaryMaster">Culinary Master</div>
+<div class="desc" id="CulinaryMaster" data-rank="0">Health potions are upgraded into Biscuits that restore an additonal 20 Health and 10 mana instantly upon consumption</div>
+<div class="desc" id="CulinaryMaster" data-rank="1">Health potions are upgraded into Biscuits that restore an additonal 20 Health and 10 mana instantly upon consumption</div>
+<div class="reqs" id="CulinaryMaster">Requires 8 points in Utility<br/>Requires 1 point in Alchemist</div>
+
+<div class="title" id="Scavenger">Scavenger</div>
+<div class="desc" id="Scavenger" data-rank="0">+1 Gold each time an ally kills a nearby lane minion</div>
+<div class="desc" id="Scavenger" data-rank="1">+1 Gold each time an ally kills a nearby lane minion</div>
+<div class="reqs" id="Scavenger">Requires 12 points in Utility<br/>Requires 3 points in Greed</div>
+
+<div class="title" id="Wealth">Wealth</div>
+<div class="desc" id="Wealth" data-rank="0">+40 Starting Gold</div>
+<div class="desc" id="Wealth" data-rank="1">+40 Starting Gold</div>
+<div class="reqs" id="Wealth">Requires 12 points in Utility</div>
+
+<div class="title" id="ExpandedMind">ExpandedMind</div>
+<div class="desc" id="ExpandedMind" data-rank="0">+2% increased maximum Mana</div>
+<div class="desc" id="ExpandedMind" data-rank="1">+2% increased maximum Mana<br/><br/>Next Rank:<br/>+3.5% increased maximum Mana</div>
+<div class="desc" id="ExpandedMind" data-rank="2">+3.5% increased maximum Mana<br/><br/>Next Rank:<br/>5% increased maximum Mana</div>
+<div class="desc" id="ExpandedMind" data-rank="3">+5% increased maximum Mana</div>
+<div class="reqs" id="ExpandedMind">Requires 12 points in Utility</div>
+
+<div class="title" id="Inspiration">Inspiration</div>
+<div class="desc" id="Inspiration" data-rank="0">+5 Experience every 10 seconds while near a higher level allied champion</div>
+<div class="desc" id="Inspiration" data-rank="1">+5 Experience every 10 seconds while near a higher level allied champion<br/><br/>Next Rank:<br/>+10 Experience every 10 seconds while near a higher level allied champion</div>
+<div class="desc" id="Inspiration" data-rank="2">+10 Experience every 10 seconds while near a higher level allied champion</div>
+<div class="reqs" id="Inspiration">Requires 12 points in Utility</div>
+
+<div class="title" id="Bandit">Bandit</div>
+<div class="desc" id="Bandit" data-rank="0">Melee - Grants +15 Gold on champion kill or assist<br/><br/>Ranged - Grants +3 Gold each time an enemy champion is attacked. This cannot trigger on the same champion more than once every 5 seconds</div>
+<div class="desc" id="Bandit" data-rank="1">Melee - Grants +15 Gold on champion kill or assist<br/><br/>Ranged - Grants +3 Gold each time an enemy champion is attacked. This cannot trigger on the same champion more than once every 5 seconds</div>
+<div class="reqs" id="Bandit">Requires 16 points in Utility<br/>Requires 1 point in Wealth</div>
+
+<div class="title" id="Intelligence">Intelligence</div>
+<div class="desc" id="Intelligence" data-rank="0">+2% Cooldown Reduction and reduces the cooldown of Activated Items by 4%</div>
+<div class="desc" id="Intelligence" data-rank="1">+2% Cooldown Reduction and reduces the cooldown of Activated Items by 4%<br/><br/>Next Rank:<br/>+3.5% Cooldown Reduction and reduces the cooldown of Activated Items by 7%</div>
+<div class="desc" id="Intelligence" data-rank="2">+3.5% Cooldown Reduction and reduces the cooldown of Activated Items by 7%<br/><br/>Next Rank:<br/>+5% Cooldown Reduction and reduces the cooldown of Activated Items by 10%</div>
+<div class="desc" id="Intelligence" data-rank="3">+5% Cooldown Reduction and reduces the cooldown of Activated Items by 10%</div>
+<div class="reqs" id="Intelligence">Requires 16 points in Utility</div>
+
+<div class="title" id="Wanderer">Wanderer</div>
+<div class="desc" id="Wanderer" data-rank="0">+5% Movement Speed out of combat</div>
+<div class="desc" id="Wanderer" data-rank="1">+5% Movement Speed out of combat</div>
+<div class="reqs" id="Wanderer">Requires 20 points in Utility</div>
