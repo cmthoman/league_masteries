@@ -609,6 +609,7 @@ body{
 	z-index: 1;
 	@include filter(grayscale(100%));
 	filter: url($ffGrayscaleOn);
+	filter: gray;
 
 	a{
 		display: inline-block;

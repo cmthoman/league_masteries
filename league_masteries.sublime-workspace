@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"ie-back",
+				"ie-background-opacity"
+			],
+			[
+				"tier",
+				"tierReqs"
+			],
+			[
+				"get",
+				"getTreeTotalPoints"
+			],
+			[
+				"total",
+				"treeTotalPoints"
+			],
+			[
+				"meets",
+				"meetsTier"
+			],
+			[
 				"upda",
 				"updateToolTip"
 			],
@@ -42,10 +62,6 @@
 			[
 				"updat",
 				"updateRemainingPoints"
-			],
-			[
-				"get",
-				"getTreeTotalPoints"
 			],
 			[
 				"check",
@@ -248,10 +264,6 @@
 				"rowRequiresPoints"
 			],
 			[
-				"tier",
-				"offensiveTier1Total"
-			],
-			[
 				"offens",
 				"offensiveTier1Total"
 			],
@@ -295,7 +307,7 @@
 			"file": "app/views/masteries/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 17615,
+				"buffer_size": 27872,
 				"line_ending": "Windows"
 			}
 		},
@@ -303,7 +315,7 @@
 			"file": "app/assets/javascripts/masteries.js",
 			"settings":
 			{
-				"buffer_size": 22580,
+				"buffer_size": 22944,
 				"line_ending": "Windows"
 			}
 		},
@@ -311,7 +323,7 @@
 			"file": "app/assets/stylesheets/masteries.css.scss",
 			"settings":
 			{
-				"buffer_size": 16516,
+				"buffer_size": 17220,
 				"line_ending": "Windows"
 			}
 		}
@@ -350,12 +362,15 @@
 		"menu_visible": true,
 		"show_minimap": false,
 		"show_open_files": false,
-		"show_tabs": false,
-		"side_bar_visible": true,
+		"show_tabs": true,
+		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
+		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/D/Code/league_masteries/app/assets/stylesheets/masteries.css.scss",
 		"/D/Code/league_masteries/app/assets/javascripts/application.js",
 		"/D/Code/league_masteries/app/assets/javascripts/masteries.js",
@@ -382,8 +397,6 @@
 		"/D/Code/lolvids/spec/requests/homes_spec.rb",
 		"/D/Code/lolvids/spec/spec_helper.rb",
 		"/D/Code/lolvids/config.ru",
-		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/D/Code/lolvids/config/initializers/inflections.rb",
 		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/Users/Chris/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap"
@@ -404,6 +417,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" / 4",
+			" / 3",
+			" / 2",
+			" / 1",
+			" / 0",
 			"returnPoint",
 			"addPoint",
 			"offensive",
@@ -441,11 +459,15 @@
 			"<div class=\"points\">0 / 1</div>"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"/4",
+			"/3",
+			"/2",
+			"/1",
 			"returnPointOffense",
 			"addPointOffense",
 			"defensive",
@@ -496,15 +518,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17615,
+						"buffer_size": 27872,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14888,
-								14888
+								27866,
+								27866
 							]
 						],
 						"settings":
@@ -513,7 +535,7 @@
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2115.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -525,26 +547,30 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 22580,
+						"buffer_size": 22944,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4309,
-								4309
+								2906,
+								2906
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"rulers":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"wrap_width": 0
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -553,15 +579,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16516,
+						"buffer_size": 17220,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1067,
-								1067
+								11493,
+								11493
 							]
 						],
 						"settings":
@@ -570,10 +596,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
